@@ -4,12 +4,12 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
-    startCommand: gunicorn ecommerce.wsgi:application
+    startCommand: gunicorn project.wsgi:application
     envVars:
       - key: PYTHON_VERSION
         value: 3.11
       - key: DJANGO_SETTINGS_MODULE
-        value: ecommerce.settings
+        value: project.settings
       - key: DEBUG
         value: False
       - key: SECRET_KEY
