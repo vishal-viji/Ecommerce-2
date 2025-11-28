@@ -22,7 +22,7 @@ import {
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get("/api/products/");
+    const { data } = await axios.get("https://ecommerce2-backend.onrender.com/api/products/");
 
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
@@ -42,7 +42,7 @@ export const listProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`/api/product/${id}`);
+    const { data } = await axios.get(`https://ecommerce2-backend.onrender.com/api/product/${id}`);
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
@@ -75,7 +75,7 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`/api/products/create/`, {}, config);
+    const { data } = await axios.post(`https://ecommerce2-backend.onrender.com/api/products/create/`, {}, config);
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
       payload: data,
@@ -108,7 +108,7 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`/api/products/update/${product._id}/`, product, config);
+    const { data } = await axios.put(`https://ecommerce2-backend.onrender.com/api/products/update/${product._id}/`, product, config);
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
       payload: data,
@@ -141,7 +141,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.delete(`/api/products/delete/${id}/`, config);
+    const { data } = await axios.delete(`https://ecommerce2-backend.onrender.com/api/products/delete/${id}/`, config);
     dispatch({
       type: PRODUCT_DELETE_SUCCESS,
       payload: data,
