@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 import django
+import os
 from django.utils.encoding import force_str
 django.utils.encoding.force_text = force_str
 from pathlib import Path
@@ -133,8 +134,11 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        'ENGINE': 'djongo',
+        'NAME': os.getenv('vishalshanmugam928_db_user'),
+        'CLIENT': {
+            'host':"mongodb+srv://vishalshanmugam928_db_user:Ft49ZUGfTiiSaWe6@ecommerce.ooit6y8.mongodb.net/ecommerce?retryWrites=true&w=majority"
+        }
     }
 }
 
