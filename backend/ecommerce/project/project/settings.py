@@ -210,4 +210,7 @@ MEDIA_ROOT='static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS= True
+CORS_ALLOWED_ORIGINS = [
+    "https://ecommerce-2-frontend-0wev.onrender.com",
+]
+
