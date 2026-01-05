@@ -29,7 +29,8 @@ SECRET_KEY = 'django-insecure-9i_b=p+yz$&91rs#9u_c*+*%11vu#se3dmf%0@&-tr30ni!0(u
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'ecommerce2-backend.onrender.com',
+    'https://ecommerce-2-backend.onrender.com',
+    'https://ecommerce-2-frontend-0wev.onrender.com',
     'localhost',
     '127.0.0.1'
 ]
@@ -68,7 +69,6 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'corsheaders.middleware.CorsMiddleware',
 ]
 
 
@@ -210,4 +210,6 @@ MEDIA_ROOT='static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOW_ALL_ORIGINS=True
+CORS_ALLOW_ALL_ORIGINS= [
+    "https://ecommerce-2-frontend-0wev.onrender.com",
+]
