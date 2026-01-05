@@ -49,7 +49,7 @@ export const signup = (fname, lname, email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://ecommerce2-backend.onrender.com/api/users/register/",
+      "/api/users/register/",
       {
         fname: fname,
         lname: lname,
@@ -88,7 +88,7 @@ export const login = (email, password) => async (dispatch) => {
     };
 
     const { data } = await axios.post(
-      "https://ecommerce2-backend.onrender.com/api/users/login",
+      "/api/users/login/",
       {
         username: email,
         password: password,
@@ -137,12 +137,13 @@ export const listUsers = () => async (dispatch, getState) => {
       const config = {
           headers: {
               'Content-type': 'application/json',
-              Authorization: `Bearer ${userInfo.token}`
+              Authorization: `Bearer ${userInfo.access}`
+
           }
       }
 
       const { data } = await axios.get(
-          `https://ecommerce2-backend.onrender.com/api/users/getallusers/`,
+          `/api/users/getallusers/`,
           config
       )
 
@@ -176,12 +177,13 @@ export const deleteUser = (id) => async (dispatch, getState) => {
       const config = {
           headers: {
               'Content-type': 'application/json',
-              Authorization: `Bearer ${userInfo.token}`
+             Authorization: `Bearer ${userInfo.access}`
+
           }
       }
 
       const { data } = await axios.delete(
-          `https://ecommerce2-backend.onrender.com/api/users/delete/${id}/`,
+          `/api/users/delete/${id}/`,
           config
       )
 
@@ -215,12 +217,13 @@ export const updateUser = (user) => async (dispatch, getState) => {
       const config = {
           headers: {
               'Content-type': 'application/json',
-              Authorization: `Bearer ${userInfo.token}`
+              Authorization: `Bearer ${userInfo.access}`
+
           }
       }
 
       const { data } = await axios.put(
-          `https://ecommerce2-backend.onrender.com/api/users/update/${user._id}/`,
+          `/api/users/update/${user._id}/`,
           user,
           config
       )
@@ -262,12 +265,13 @@ export const getUserDetails = (id) => async (dispatch, getState) => {
       const config = {
           headers: {
               'Content-type': 'application/json',
-              Authorization: `Bearer ${userInfo.token}`
+              Authorization: `Bearer ${userInfo.access}`
+
           }
       }
 
       const { data } = await axios.get(
-          `https://ecommerce2-backend.onrender.com/api/users/${id}/`,
+          `/api/users/${id}/`,
           config
       )
 
@@ -301,12 +305,13 @@ export const updateUserProfile = (user) => async (dispatch, getState) => {
       const config = {
           headers: {
               'Content-type': 'application/json',
-              Authorization: `Bearer ${userInfo.token}`
+              Authorization: `Bearer ${userInfo.access}`
+
           }
       }
 
       const { data } = await axios.put(
-          `https://ecommerce2-backend.onrender.com/api/users/profile/update/`,
+          `/api/users/profile/update/`,
           user,
           config
       )

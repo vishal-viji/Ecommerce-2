@@ -17,12 +17,12 @@ import {
   PRODUCT_UPDATE_FAIL,
 } from "../constants/productConstants";
 
-const API_URL = "https://ecommerce2-backend.onrender.com/api/products";
+
 
 export const listProducts = () => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_LIST_REQUEST });
-    const { data } = await axios.get(`${API_URL}/`);
+    const { data } = await axios.get("/api/products/");
     dispatch({
       type: PRODUCT_LIST_SUCCESS,
       payload: data,
@@ -39,7 +39,8 @@ export const listProducts = () => async (dispatch) => {
 export const listProductDetails = (id) => async (dispatch) => {
   try {
     dispatch({ type: PRODUCT_DETAILS_REQUEST });
-    const { data } = await axios.get(`${API_URL}/${id}/`);
+    const { data } = await axios.get(`/api/product/${id}`)
+;
     dispatch({
       type: PRODUCT_DETAILS_SUCCESS,
       payload: data,
@@ -53,7 +54,7 @@ export const listProductDetails = (id) => async (dispatch) => {
   }
 };
 
-export const createProduct = () => async (dispatch, getState) => {
+export const createProduct = (id) => async (dispatch, getState) => {
   try {
     dispatch({ type: PRODUCT_CREATE_REQUEST });
 
@@ -67,7 +68,8 @@ export const createProduct = () => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.post(`${API_URL}/`, {}, config);
+    const { data } = await axios.post(`/api/products/${id}`, {}, config);
+
 
     dispatch({
       type: PRODUCT_CREATE_SUCCESS,
@@ -97,7 +99,8 @@ export const updateProduct = (product) => async (dispatch, getState) => {
       },
     };
 
-    const { data } = await axios.put(`${API_URL}/${product._id}/`, product, config);
+    const { data } = await axios.put(`/api/products/${product}`, product, config);
+
 
     dispatch({
       type: PRODUCT_UPDATE_SUCCESS,
@@ -126,7 +129,7 @@ export const deleteProduct = (id) => async (dispatch, getState) => {
       },
     };
 
-    await axios.delete(`${API_URL}/${id}/`, config);
+    await axios.delete(`/api/products/${id}`, config);
 
     dispatch({ type: PRODUCT_DELETE_SUCCESS });
   } catch (error) {

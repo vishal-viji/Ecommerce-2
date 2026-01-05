@@ -28,7 +28,12 @@ SECRET_KEY = 'django-insecure-9i_b=p+yz$&91rs#9u_c*+*%11vu#se3dmf%0@&-tr30ni!0(u
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [
+    'ecommerce2-backend.onrender.com',
+    'localhost',
+    '127.0.0.1'
+]
+
 
 
 # Application definition
@@ -134,13 +139,12 @@ WSGI_APPLICATION = 'project.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'djongo',
-        'NAME': os.getenv('vishalshanmugam928_db_user'),
-        'CLIENT': {
-            'host':"mongodb+srv://vishalshanmugam928_db_user:Ft49ZUGfTiiSaWe6@ecommerce.ooit6y8.mongodb.net/ecommerce?retryWrites=true&w=majority"
-        }
+        'ENGINE': 'django.db.backends.sqlite3',
+        'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+
 
 
 # Password validation
@@ -178,10 +182,10 @@ USE_TZ = True
 
 # email credential for sending email
 # EMAIL_HOST='smtpout.secureserver.net'
-EMAIL_HOST='smtp.gmail.com'
-# EMAIL_HOST_USER='anees@arkprocoder.com'
-EMAIL_HOST_USER=''
-EMAIL_HOST_PASSWORD=''
+ #EMAIL_HOST='smtp.gmail.com'
+EMAIL_HOST_USER='vishalshanmugam928@gmail.com'
+#EMAIL_HOST_USER='bossvishal50@gmail.com'
+EMAIL_HOST_PASSWORD='Vishal@555@'
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
 EMAIL_BACKEND='django.core.mail.backends.smtp.EmailBackend'

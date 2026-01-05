@@ -2,7 +2,7 @@ import { CART_ADD_ITEM,CART_REMOVE_ITEM,CART_CLEAR_ITEMS ,CART_SAVE_SHIPPING_ADD
 import axios from 'axios';
 
 export const addToCart =(id,qty)=> async (dispatch,getState)=>{
-    const {data} = await axios.get(`https://ecommerce2-backend.onrender.com/api/product/${id}`)
+    const {data} = await axios.get(`/api/product/${id}`)
 
     dispatch({
         type:CART_ADD_ITEM,

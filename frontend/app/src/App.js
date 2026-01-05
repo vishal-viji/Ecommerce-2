@@ -21,60 +21,30 @@ import ProfileScreen from "./components/screens/ProfileScreen";
 
 export default function App() {
   return (
-    <>
-      <BrowserRouter>
-        <Header />
-        <main>
-          <Container>
-            <Routes>
-              <Route path="/" element={<Home />} />
-            </Routes>
-            <Routes>
-              <Route path="/product/:id" element={<ProductDetails />} />
-            </Routes>
-            <Routes>
-              <Route path="/signup" element={<SignupScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/login" element={<LoginScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/cart/:id?" element={<CartScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/checkout" element={<ShippingScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/placeorder" element={<PlaceOrderScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/payment" element={<PaymentScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/order/:id" element={<OrderScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/admin/productList" element={<ProductListScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/admin/orderlist" element={<OrderListScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/admin/userlist" element={<UserListScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
-            </Routes>
-            <Routes>
-              <Route path="/profile" element={<ProfileScreen />} />
-            </Routes>
-          </Container>
-        </main>
-        <Footer/>
-      </BrowserRouter>
-    </>
+    <BrowserRouter>
+      <Header />
+      <main>
+        <Container>
+          <Routes>
+            <Route path="/" element={<Home />} />
+            <Route path="/product/:id" element={<ProductDetails />} />
+            <Route path="/signup" element={<SignupScreen />} />
+            <Route path="/login" element={<LoginScreen />} />
+            <Route path="/cart/:id?" element={<CartScreen />} />
+            <Route path="/checkout" element={<ShippingScreen />} />
+            <Route path="/placeorder" element={<PlaceOrderScreen />} />
+            <Route path="/payment" element={<PaymentScreen />} />
+            <Route path="/order/:id" element={<OrderScreen />} />
+            <Route path="/admin/productList" element={<ProductListScreen />} />
+            <Route path="/admin/product/:id/edit" element={<ProductEditScreen />} />
+            <Route path="/admin/orderlist" element={<OrderListScreen />} />
+            <Route path="/admin/userlist" element={<UserListScreen />} />
+            <Route path="/admin/user/:id/edit" element={<UserEditScreen />} />
+            <Route path="/profile" element={<ProfileScreen />} />
+          </Routes>
+        </Container>
+      </main>
+      <Footer />
+    </BrowserRouter>
   );
 }

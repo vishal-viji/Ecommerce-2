@@ -9,6 +9,7 @@ from rest_framework_simplejwt.serializers import TokenObtainPairSerializer # typ
 from rest_framework_simplejwt.views import TokenObtainPairView # type: ignore
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import make_password
+from rest_framework.exceptions import AuthenticationFailed
 
 # for email purpose and cerifying the email
 from django.template.loader import render_to_string
@@ -29,8 +30,8 @@ def getRoutes(request):
        {
            "products":'http://127.0.0.1:8000/api/products',
            "product":'http://127.0.0.1:8000/api/product/1',
-           "login":"http://127.0.0.1:8000/api/users/login",
-           "signup":"http://127.0.0.1:8000/api/users/register",
+           "login":"http://127.0.0.1:8000/api/users/login/",
+           "signup":"http://127.0.0.1:8000/api/users/register/",
         
         
         } 
@@ -64,11 +65,20 @@ def getProduct(request,pk):
 
 
 class MyTokenObtainPairSerializer(TokenObtainPairSerializer):
-    def validate(self,attrs):
-        data=super().validate(attrs)
-        serializer=UserSerializerWithToken(self.user).data
-        for k,v in serializer.items():
-            data[k]=v
+    username_field = 'username'  # 🔥 IMPORTANT
+
+    def validate(self, attrs):
+        data = super().validate(attrs)
+
+        if not self.user.is_active:
+            raise AuthenticationFailed("Account not activated. Check your email.")
+
+        serializer = UserSerializerWithToken(self.user).data
+        for k, v in serializer.items():
+            data[k] = v
+
+        return data
+
         return data
 
 class MyTokenObtainPairView(TokenObtainPairView):
@@ -81,7 +91,11 @@ def registerUser(request):
     data=request.data
 
     try:
-        user=User.objects.create(first_name=data['fname'],last_name=data['lname'],username=data['email'],email=data['email'],password=make_password(data['password']),is_active=False)
+        user=User.objects.create(first_name=data['fname'],last_name=data['lname'],
+                                 username=data['email'],
+                                 email=data['email'],
+                                 password=make_password(data['password']),
+                                 is_active=False)
 
         email_subject="Activate Your Account"
         message=render_to_string(
@@ -96,8 +110,6 @@ def registerUser(request):
 
         # email_message=EmailMessage(email_subject,message,settings.EMAIL_HOST_USER,[data['email']])
         # email_message.send()
-
-
         message={"details":f"Activate your account please check click the link in gmail for account activation {message}"}
         return Response(message)
     
