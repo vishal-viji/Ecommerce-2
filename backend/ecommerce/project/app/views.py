@@ -101,7 +101,7 @@ def registerUser(request):
         message=render_to_string(
             "activate.html",{
                 'user':user,
-                'domain':'127.0.0.1:8000/',
+                'domain':'domain',
                 'uid':urlsafe_base64_encode(force_bytes(user.pk)),
                 'token':generate_token.make_token(user)
 
