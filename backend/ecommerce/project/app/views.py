@@ -28,10 +28,10 @@ from rest_framework import status
 def getRoutes(request):
     myapis=[
        {
-           "products":'http://127.0.0.1:8000/api/products',
-           "product":'http://127.0.0.1:8000/api/product/1',
-           "login":"http://127.0.0.1:8000/api/users/login/",
-           "signup":"http://127.0.0.1:8000/users/register/",
+           "products":'/api/products',
+           "product":'/api/product/1',
+           "login":"/api/users/login/",
+           "signup":"/users/register/",
         
         
         } 
