@@ -29,10 +29,7 @@ SECRET_KEY = 'django-insecure-9i_b=p+yz$&91rs#9u_c*+*%11vu#se3dmf%0@&-tr30ni!0(u
 DEBUG = True
 
 ALLOWED_HOSTS = [
-    'ecommerce-2-backend.onrender.com',
-    'ecommerce-2-frontend-0wev.onrender.com',
-    'localhost',
-    '127.0.0.1'
+    
 ]
 
 
@@ -183,7 +180,7 @@ USE_TZ = True
 # email credential for sending email
 # EMAIL_HOST='smtpout.secureserver.net'
  #EMAIL_HOST='smtp.gmail.com'
-EMAIL_HOST_USER='vishalshanmugam928@gmail.com'
+EMAIL_HOST_USER='smtp.gmail.com'
 EMAIL_HOST_PASSWORD=''
 EMAIL_PORT=587
 EMAIL_USE_TLS=True
@@ -210,7 +207,4 @@ MEDIA_ROOT='static/images'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-CORS_ALLOWED_ORIGINS = [
-    "https://ecommerce-2-frontend-0wev.onrender.com",
-]
-
+CORS_ALLOW_ALL_ORIGINS=True

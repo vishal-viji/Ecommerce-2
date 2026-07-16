@@ -28,10 +28,10 @@ from rest_framework import status
 def getRoutes(request):
     myapis=[
        {
-           "products":'https://ecommerce-2-backend.onrender.com/api/products',
-           "product":'https://ecommerce-2-backend.onrender.com/api/product/1',
-           "login":"https://ecommerce-2-backend.onrender.com/api/users/login/",
-           "signup":"https://ecommerce-2-backend.onrender.com/users/register/",
+           "products":'http://127.0.0.1:8000/api/products',
+           "product":'http://127.0.0.1:8000/api/product/1',
+           "login":"http://127.0.0.1:8000/api/users/login/",
+           "signup":"http://127.0.0.1:8000/users/register/",
         
         
         } 

@@ -35,7 +35,7 @@ function UserEditScreen({params}) {
             navigate('/admin/userlist')
         } else {
 
-            if (!user.name || user._id !== Number(id)) {
+            if (!user.first_name || user._id !== Number(id)) {
                 dispatch(getUserDetails(id))
             } else {
                 setName(user.name)
