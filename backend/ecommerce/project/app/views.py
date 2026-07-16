@@ -31,7 +31,7 @@ def getRoutes(request):
            "products":'/api/products',
            "product":'/api/product/1',
            "login":"/api/users/login/",
-           "signup":"/users/register/",
+           "signup":"/api/users/register/",
         
         
         } 
