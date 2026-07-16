@@ -4,6 +4,8 @@ services:
     env: python
     buildCommand: |
       pip install -r requirements.txt
+      python manage.py migrate
+      python manage.py create_superuser_if_none
     startCommand: gunicorn project.wsgi:application
     envVars:
       - key: PYTHON_VERSION
@@ -14,3 +16,9 @@ services:
         value: False
       - key: SECRET_KEY
         value: your-secret-key
+      - key: DJANGO_SUPERUSER_USERNAME
+        value: admin
+      - key: DJANGO_SUPERUSER_EMAIL
+        value: vishal@gmail.com
+      - key: DJANGO_SUPERUSER_PASSWORD
+        value: Guvi@123
