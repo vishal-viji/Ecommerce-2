@@ -95,7 +95,7 @@ def registerUser(request):
                                  username=data['email'],
                                  email=data['email'],
                                  password=make_password(data['password']),
-                                 is_active=False)
+                                 is_active=True)
 
         email_subject="Activate Your Account"
         message=render_to_string(
