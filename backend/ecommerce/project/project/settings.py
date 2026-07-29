@@ -43,9 +43,10 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
+    'cloudinary_storage',
     'django.contrib.staticfiles',
-    'app.apps.AppConfig',
     'cloudinary',
+    'app.apps.AppConfig',
     "corsheaders",
     "rest_framework"
 ]
