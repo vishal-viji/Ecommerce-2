@@ -43,13 +43,31 @@ INSTALLED_APPS = [
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
-  
     'django.contrib.staticfiles',
-    
+    'cloudinary_storage',
+    'cloudinary',
     'app.apps.AppConfig',
     "corsheaders",
     "rest_framework"
 ]
+
+# Cloudinary credentials
+CLOUDINARY_STORAGE = {
+    'CLOUD_NAME': 'your_cloud_name',
+    'API_KEY': 'your_api_key',
+    'API_SECRET': 'your_api_secret',
+}
+
+# Django 5.2 uses the STORAGES dict — this is the part that keeps your CSS safe
+STORAGES = {
+    "default": {
+        "BACKEND": "cloudinary_storage.storage.MediaCloudinaryStorage",   # user uploads -> Cloudinary
+    },
+    "staticfiles": {
+        "BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage",  # CSS/JS -> whitenoise, NOT Cloudinary
+    },
+}
+
 
 REST_FRAMEWORK = {
  
